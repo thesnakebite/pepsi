@@ -1,0 +1,419 @@
+/* Variables */
+$fontfamily-heading: 'CustomHeadingFont';
+$fontfamily-paragraph: 'CustomParagraphFont';
+$fontfamily-button: 'CustomHeadingFont';
+
+$text-h2-fontsize: 34px;
+$text-h2-lineheight: 44px;
+$text-h2-fontsize-mobile: 24px;
+$text-h2-lineheight-mobile: 34px;
+
+$text-p-fontsize: 20px;
+$text-p-lineheight: 26px;
+$text-p-fontsize-mobile: 16px;
+$text-p-lineheight-mobile: 20px;
+
+$text-generic-fontsize: 16px !important;
+$text-small-fontsize: 14px !important;
+
+$text-aux-color: #9f1239 !important;
+
+$button-fontsize: 20px;
+$button-lineheight: 1.4em;
+$buttton-padding: 5px 20px;
+
+$input-label-select-option-color: #000000 !important;
+$input-select-empty-color: #cccccc;
+$input-disabled-bgcolor: #fcfcfc;
+
+$table-cell-border-color: #cccccc;
+
+$block-margin-bottom: 20px;
+
+/* Responsive (tailwind breakpoints) */
+$break-xs: 480px;
+$break-sm: 640px;
+$break-md: 768px;
+$break-lg: 1024px;
+$break-xl: 1280px;
+$break-2xl: 1536px;
+
+/* Base */
+html, body {
+    min-height: 100vh;
+}
+body {
+    &.locked {
+        overflow-y: hidden;
+    }
+}
+
+#app {
+    overflow-x: hidden;
+    position: relative;
+}
+
+input {
+    outline: none;
+}
+
+/* Utils */
+.aux-fontfamily-parargraph {
+    font-family: $fontfamily-paragraph;
+}
+.aux-fontfamily-heading {
+    font-family: $fontfamily-heading;
+}
+.aux-text-color {
+    color: $text-aux-color;
+}
+.hide-desktop {
+    @media (min-width: $break-lg) {
+        display: none !important;
+    }
+}
+.hide-mobile {
+    @media (max-width: calc($break-lg - 1px)) {
+        display: none !important;
+    }
+}
+
+/* Resets */
+input,
+textarea {
+    font-size: $text-generic-fontsize;
+
+    &:focus {
+        box-shadow: unset !important;
+    }
+}
+button {
+    &:focus {
+        box-shadow: unset !important;
+    }
+}
+
+/* Layout */
+.app-layout {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    main {
+        flex: 1 0 auto;
+    }
+
+    footer {
+        flex-shrink: 0;
+    }
+}
+header {
+    position: relative;
+
+    .desktop-nav {
+        li {
+            @media (max-width: $break-xs) {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .mobile-nav {
+        .nav-wrapper {
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 5;
+            transform: translateX(200%); /* for preventing initial display until calculations */
+
+            li {
+                font-size: 28px;
+            }
+        }
+    }
+}
+footer {
+    ul {
+        li {
+            @media (max-width: $break-sm) {
+                font-size: 12px;
+            }
+        }
+    }
+
+    ul.social {
+        li {
+            width: 25px;
+            max-width: 25px;
+            margin: 0 5px;
+
+            a {
+                display: inline-block;
+
+                svg {
+                    width: 100%;
+                    max-width: 100%;
+                    height: auto;
+                }
+            }
+        }
+    }
+
+    .copyright {
+        @media (max-width: $break-sm) {
+            font-size: 12px;
+        }
+    }
+}
+
+/* Components */
+.block-item {
+    margin-bottom: $block-margin-bottom;
+}
+
+.block-text {
+    h2 {
+        font-size: $text-h2-fontsize;
+        line-height: $text-h2-lineheight;
+
+        @media (max-width: $break-xs) {
+            font-size: $text-h2-fontsize-mobile;
+            line-height: $text-h2-lineheight-mobile;
+        }
+    }
+
+    p {
+        font-size: $text-p-fontsize;
+        line-height: $text-p-lineheight;
+
+        @media (max-width: $break-xs) {
+            font-size: $text-p-fontsize-mobile;
+            line-height: $text-p-lineheight-mobile;
+        }
+    }
+
+    .ql-align-center {
+        text-align: center;
+    }
+    .ql-align-right {
+        text-align: right;
+    }
+
+    ul {
+        list-style-type: disc;
+        padding-left: 80px;
+
+        @media (max-width: $break-sm) {
+            padding-left: 40px;
+        }
+
+        li {
+            font-size: $text-p-fontsize;
+            line-height: $text-p-lineheight;
+
+            @media (max-width: $break-sm) {
+                font-size: $text-p-fontsize-mobile;
+                line-height: $text-p-lineheight-mobile;
+            }
+        }
+    }
+
+    ol {
+        list-style-type: decimal;
+        padding-left: 80px;
+
+        @media (max-width: $break-sm) {
+            padding-left: 40px;
+        }
+
+        li {
+            font-size: $text-p-fontsize;
+            line-height: $text-p-lineheight;
+
+            @media (max-width: $break-sm) {
+                font-size: $text-p-fontsize-mobile;
+                line-height: $text-p-lineheight-mobile;
+            }
+        }
+    }
+
+    a {
+        text-decoration: underline;
+    }
+
+    table {
+        font-size: $text-small-fontsize;
+
+        td {
+            border: 1px solid $table-cell-border-color;
+            padding: 5px;
+        }
+    }
+}
+
+.block-map {
+    .map-wrapper {
+        height: 100%;
+        max-height: 500px;
+        position: relative;
+
+        @media (max-width: $break-sm) {
+            max-height: 350px;
+        }
+
+        .map-overlay {
+            background-color: #000000;
+            width: 100%;
+            height: 100%;
+            padding: 2rem;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            opacity: 0.8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            p {
+                font-size: 24px;
+            }
+        }
+
+        #map {
+            width: 100%;
+            height: 500px;
+
+            @media (max-width: $break-sm) {
+                height: 350px;
+            }
+        }
+    }
+
+    .error {
+        color: $text-aux-color;
+
+        &::first-letter {
+            text-transform: uppercase;
+        }
+    }
+}
+
+.block-button {
+    font-family: $fontfamily-button;
+    font-size: $button-fontsize;
+    line-height: $button-lineheight;
+    padding: $buttton-padding;
+    display: inline-block;
+    transition: opacity 0.3s ease-in-out;
+
+    &:hover {
+        opacity: 0.9;
+    }
+}
+
+.block-form {
+    span {
+        font-family: $fontfamily-paragraph;
+        font-size: $text-p-fontsize-mobile;
+
+        @media (max-width: $break-lg) {
+            font-size: $text-small-fontsize;
+        }
+
+        a {
+            text-decoration: underline;
+        }
+    }
+
+    span:not(.form-footer) {
+        color: $input-label-select-option-color;
+    }
+
+    .el-select {
+        height: 42px;
+
+        .select-trigger {
+            height: 100%;
+        }
+
+        .el-input {
+            height: 100%;
+
+            .el-input__inner {
+                border-radius: 0;
+                height: 100%;
+    
+                &:hover,
+                &:focus,
+                &:active {
+                    border-color: unset;
+                }
+            }
+
+            &.is-focus {
+                .el-input__inner {
+                    border-color: unset;
+                }
+            }
+
+            &.is-disabled {
+                .el-input__inner {
+                    background-color: $input-disabled-bgcolor;
+                    opacity: 0.5;
+                }
+            }
+        }
+    }
+
+    .error {
+        font-family: $fontfamily-paragraph;
+        font-size: $text-small-fontsize;
+        color: $text-aux-color;
+        display: inline-block;
+
+        &::first-letter {
+            text-transform: uppercase;
+        }
+    }
+}
+.el-select-dropdown {
+    .el-select-dropdown__item {
+        font-family: $fontfamily-paragraph;
+        font-size: $text-generic-fontsize;
+        color: $input-label-select-option-color;
+    }
+
+    .el-select-dropdown__empty {
+        font-family: $fontfamily-paragraph;
+        font-size: $text-generic-fontsize;
+        color: $input-select-empty-color;
+    }
+}
+.el-notification {
+    h2 {
+        font-family: $fontfamily-heading;
+    }
+
+    p {
+        font-family: $fontfamily-paragraph;
+        color: #000000;
+        line-height: 1em;
+    }
+}
+
+/* FitVid: fluid video embeds */
+.fitVids-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+}
+.fitVids-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
